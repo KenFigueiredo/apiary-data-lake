@@ -4,17 +4,21 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Terraform validate
+    name: Terraform
     runs-on: ubuntu-18.04
     steps:
     - name: Check out code  
       uses: actions/checkout@v2
 
-    - name: HashiCorp - Setup Terraform
+    - name: Setup
       uses: hashicorp/setup-terraform@v1.1.0
       with:
         terraform_version: 0.12.29
 
-    - run: terraform init -backend=false
+    - name: Init
+      run: terraform init -backend=false
 
-    - run: terraform validate
+    - name: Validate
+      run: terraform validate
+      env: 
+        AWS_DEFAULT_REGION: us-west-1
