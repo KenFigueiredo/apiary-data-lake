@@ -11,5 +11,6 @@ jobs:
       uses: hashicorp/setup-terraform@v1.1.0
       with:
         terraform_version: 0.12.25
+    - run: ls -la
     - run: terraform init -backend=false
     - run: terraform validate
