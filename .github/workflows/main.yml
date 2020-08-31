@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: Check out code  
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v1.1.0
@@ -16,5 +16,5 @@ jobs:
         terraform_version: 0.12.25
 
     - run: terraform init -backend=false
-    
+
     - run: terraform validate
