@@ -1,0 +1,15 @@
+name: Terraform CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Terraform validate
+    runs-on: ubuntu-18.04
+    steps:
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v1.1.0
+      with:
+        terraform_version: 0.12.25
+    - run: terraform init -backend=false
+    - run: terraform validate
